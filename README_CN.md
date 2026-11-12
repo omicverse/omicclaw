@@ -130,6 +130,47 @@ omicclaw
 
 ---
 
+## 智能体接口
+
+以下入口随 `omicverse` 一起安装，说明统一放在这里。
+
+### OpenClaw：一句话完成分析
+
+用一句自然语言让智能体在 `AnnData` 上完成分析（基于 `ov.Agent`）：
+
+```bash
+omicverse claw 'help me annotate the lung scrna-seq'
+```
+
+教程：[ov.Agent 分析 PBMC3k](https://omicverse.readthedocs.io/en/latest/Tutorials-llm/t_ov_agent_pbmc3k/)
+
+### MCP 服务器
+
+通过 [Model Context Protocol](https://modelcontextprotocol.io/) 把 OmicVerse 已注册的分析工具提供给 AI 助手（Claude Code 等）：
+
+```bash
+pip install "omicverse[mcp]"
+
+python -m omicverse.mcp              # 或: omicverse-mcp（stdio 传输）
+python -m omicverse.mcp --phase P0   # 只启用核心流程工具
+```
+
+教程：[MCP 指南](https://omicverse.readthedocs.io/en/latest/Tutorials-llm/t_mcp_guide/)
+
+### J.A.R.V.I.S. 消息机器人
+
+在手机上通过聊天渠道分析 `AnnData`：
+
+```bash
+pip install "omicverse[jarvis]"
+
+omicverse jarvis --channel telegram --token "$TELEGRAM_BOT_TOKEN"
+```
+
+教程：[J.A.R.V.I.S. 概览](https://omicverse.readthedocs.io/en/latest/Tutorials-jarvis/t_msg_bot_overview/)
+
+---
+
 ## 这个仓库在整体架构里的位置
 
 当前 OmicClaw 体系大致分成三层：

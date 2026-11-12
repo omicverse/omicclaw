@@ -130,6 +130,47 @@ Use this when you are working directly with the standalone web package or develo
 
 ---
 
+## Agent Interfaces
+
+These entry points ship with `omicverse` and are documented here.
+
+### OpenClaw: analysis from a prompt
+
+Run an analysis on an `AnnData` from one natural-language request (backed by `ov.Agent`):
+
+```bash
+omicverse claw 'help me annotate the lung scrna-seq'
+```
+
+Tutorial: [ov.Agent on PBMC3k](https://omicverse.readthedocs.io/en/latest/Tutorials-llm/t_ov_agent_pbmc3k/)
+
+### MCP server
+
+Expose the registered OmicVerse analysis tools to AI assistants (Claude Code and others) over the [Model Context Protocol](https://modelcontextprotocol.io/):
+
+```bash
+pip install "omicverse[mcp]"
+
+python -m omicverse.mcp              # or: omicverse-mcp (stdio transport)
+python -m omicverse.mcp --phase P0   # core pipeline tools only
+```
+
+Tutorial: [MCP guide](https://omicverse.readthedocs.io/en/latest/Tutorials-llm/t_mcp_guide/)
+
+### J.A.R.V.I.S. message bots
+
+Analyse an `AnnData` from your phone through a chat channel:
+
+```bash
+pip install "omicverse[jarvis]"
+
+omicverse jarvis --channel telegram --token "$TELEGRAM_BOT_TOKEN"
+```
+
+Tutorial: [J.A.R.V.I.S. overview](https://omicverse.readthedocs.io/en/latest/Tutorials-jarvis/t_msg_bot_overview/)
+
+---
+
 ## Where This Repo Fits
 
 The current OmicClaw stack is split across three layers:
